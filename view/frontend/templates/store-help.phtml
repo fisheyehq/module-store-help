@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Fisheye\StoreHelp\ViewModel\StoreInformation $storeInformation */
+$storeInformation = $block->getData('storeInformation');
+/** @var Fisheye\StoreHelp\ViewModel\Config $config*/
+$config = $block->getData('config');
+?>
+<?php if ($config->displayStoreHelpBlock()): ?>
+    <div class="store-help links">
+
+        <h3><?= $block->escapeHtml($block->getData('title')) ?></h3>
+
+        <div class="store-phone">
+            <a href="tel: <?= $block->escapeHtmlAttr($storeInformation->getStorePhone()) ?>">
+                <?= $block->escapeHtml(sprintf(__('Call %s'), $storeInformation->getStorePhone())) ?>
+            </a>
+        </div>
+
+        <div class="store-hours">
+            <?= $block->escapeHtml(sprintf(__('(Our lines are open %s)'), $storeInformation->getStoreHours())) ?>
+        </div>
+
+        <div class="store-email">
+            <a href="<?= $block->escapeUrl($block->getUrl('contact')) ?>">
+                <?= $block->escapeHtml(__('or click here to email us!')) ?>
+            </a>
+        </div>
+
+        <?php if ($config->displayStoreAddress()): ?>
+            <br>
+            <div class="store-address">
+                <?= $storeInformation->getStoreAddress() ?>
+            </div>
+        <?php endif ?>
+
+    </div>
+<?php endif ?>

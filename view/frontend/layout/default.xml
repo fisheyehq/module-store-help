@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="footer">
+            <block name="store.help"
+                   template="Fisheye_StoreHelp::store-help.phtml"
+                   after="footer_links">
+                <arguments>
+                    <argument name="config" xsi:type="object">Fisheye\StoreHelp\ViewModel\Config</argument>
+                    <argument name="storeInformation" xsi:type="object">Fisheye\StoreHelp\ViewModel\StoreInformation</argument>
+                    <argument name="title" translate="true" xsi:type="string">Need Help?</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
